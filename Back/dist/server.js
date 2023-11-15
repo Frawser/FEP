@@ -1,26 +1,16 @@
-var express = require('express');
-var mongoose = require('mongoose');
-var cors = require('cors');
-var app = express();
-var port = process.env.PORT || 3000;
-// Middleware
+"use strict";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const app = express();
+const port = process.env.PORT || 3000;
+// Enable CORS for all routes
 app.use(cors());
-app.use(express.json());
-// MongoDB connection
-mongoose.connect('mongodb://localhost:27017/your_database_name', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+app.use(bodyParser.json());
+// Connect to MongoDB
+mongoose.connect("mongodb+srv://Admin:admin@cluster0.tzx7plk.mongodb.net/data");
+mongoose.connection.once("open", () => {
+    console.log("Connected to MongoDB");
 });
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function () {
-    console.log('Connected to MongoDB');
-});
-// Routes
-app.get('/', function (req, res) {
-    res.send('Hello from the backend!');
-});
-// Start the server
-app.listen(port, function () {
-    console.log("Server is running on port ".concat(port));
-});
+app.listen(port, () => console.log(`Listening on port ${port}`));
