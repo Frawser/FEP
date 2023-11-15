@@ -1,9 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-
-
-import Layout from "./pages/Layout";
+import 'tailwindcss/tailwind.css'; 
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import RegisterUser from "./pages/RegisterUser";
 import RegisterHouse from "./pages/RegisterGarage";

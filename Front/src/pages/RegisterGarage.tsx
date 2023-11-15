@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "tailwindcss/tailwind.css";
 
 const RegisterGarage = () => {
   // State variables for form fields
@@ -32,10 +32,8 @@ const RegisterGarage = () => {
 
       if (response.ok) {
         console.log("House successfully registered!");
-       
       } else {
         console.error("Failed to register house.");
-        
       }
     } catch (error) {
       console.error("Error:", error);
@@ -43,43 +41,51 @@ const RegisterGarage = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h2>Register Garage</h2>
+    <div className="container mx-auto mt-4">
+      <h2 className="text-2xl font-bold">Register Garage</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">Garage Name:</label>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Garage Name:
+          </label>
           <input
             type="text"
-            className="form-control"
+            className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             value={houseName}
             onChange={(e) => setHouse(e.target.value)}
             required
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label">State:</label>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            State:
+          </label>
           <input
             type="text"
-            className="form-control"
+            className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             value={state}
             onChange={(e) => setState(e.target.value)}
             required
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label">Price Per Day:</label>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Price Per Day:
+          </label>
           <input
             type="number"
-            className="form-control"
+            className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label">Category:</label>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Category:
+          </label>
           <select
-            className="form-select"
+            className="mt-1 p-2 border border-gray-300 rounded-md w-full"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
@@ -89,7 +95,7 @@ const RegisterGarage = () => {
             <option value="car">Car</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="bg-blue-500 text-white p-2 rounded-md">
           Register
         </button>
       </form>

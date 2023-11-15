@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'tailwindcss/tailwind.css';
 
 const Motorcycle = () => {
   // Sample data for motorcycle garages
@@ -9,21 +9,21 @@ const Motorcycle = () => {
   ];
 
   return (
-    <div className="container mt-4">
-      <h2>Motorcycle Garages</h2>
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div className="container mx-auto mt-4">
+      <h2 className="text-2xl font-bold">Motorcycle Garages</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {garages.map((garage) => (
-          <div key={garage.id} className="col">
-            <div className="card">
+          <div key={garage.id} className="mb-4">
+            <div className="bg-white rounded-md overflow-hidden shadow-md">
               <img
                 src="https://via.placeholder.com/300"
-                className="card-img-top"
+                className="w-full h-64 object-cover"
                 alt={`Garage ${garage.name}`}
               />
-              <div className="card-body">
-                <h5 className="card-title">{garage.name}</h5>
-                <p className="card-text">Price per day: ${garage.pricePerDay}</p>
-                <a href="#" className="btn btn-primary">
+              <div className="p-4">
+                <h5 className="text-xl font-bold mb-2">{garage.name}</h5>
+                <p className="text-gray-700">Price per day: ${garage.pricePerDay}</p>
+                <a href="#" className="mt-2 inline-block bg-blue-500 text-white px-4 py-2 rounded">
                   Book Now
                 </a>
               </div>
