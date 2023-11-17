@@ -15,7 +15,6 @@ const getGarages = async (req: Request, res: Response) => {
 //Register a new garage
 const registerGarage = async (req: Request, res: Response) => {
   const {
-    name,
     homeOwnerName,
     address,
     phone,
@@ -28,7 +27,6 @@ const registerGarage = async (req: Request, res: Response) => {
   } = req.body;
 
   if (
-    !name ||
     !homeOwnerName ||
     !address ||
     !phone ||
@@ -49,7 +47,6 @@ const registerGarage = async (req: Request, res: Response) => {
   }
 
   const newGarage = new Garage({
-    name,
     homeOwnerName,
     address,
     phone,
@@ -80,7 +77,7 @@ const updateGarage = async (req: Request, res: Response) => {
   try {
     const updatedGarage = await Garage.updateOne(
       { _id: req.params.id },
-      { $set: { name: req.body.name } }
+      { $set: { name: req.body.homeOwnerName } }
     );
     res.json(updatedGarage);
   } catch (error) {

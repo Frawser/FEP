@@ -2,7 +2,6 @@ import mongoose, { Schema } from "mongoose";
 
 
 const garageSchema = new Schema({
-  name: { type: String, required: true },
   homeOwnerName: { type: String, required: true },
   address: { type: String, required: true },
   phone: { type: String, required: true },

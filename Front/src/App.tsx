@@ -6,6 +6,7 @@ import RegisterUser from "./pages/RegisterUser";
 import RegisterHouse from "./pages/RegisterGarage";
 import Motorcycle from "./pages/Motorcycle";
 import Car from "./pages/Car";
+import Login from "./pages/Login";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="register-house" element={<RegisterHouse />} />
           <Route path="motorcycle" element={<Motorcycle />} />
           <Route path="car" element={<Car />} />
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
