@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+
 import Garage from "../schemas/garageSchema";
-import { NextFunction, Request, Response } from "express";
+import {Request, Response } from "express";
 
 // Get all garages
-const getGarages = async (req: Request, res: Response) => {
+const getAllGarages = async (req: Request, res: Response) => {
   try {
     const garages = await Garage.find();
     res.json(garages);
@@ -15,8 +15,8 @@ const getGarages = async (req: Request, res: Response) => {
 //Register a new garage
 const registerGarage = async (req: Request, res: Response) => {
   const {
-    homeOwnerName,
-    address,
+    garageOwnerName,
+    adress,
     phone,
     email,
     garageType,
@@ -27,8 +27,8 @@ const registerGarage = async (req: Request, res: Response) => {
   } = req.body;
 
   if (
-    !homeOwnerName ||
-    !address ||
+    !garageOwnerName ||
+    !adress ||
     !phone ||
     !email ||
     !garageType ||
@@ -41,14 +41,14 @@ const registerGarage = async (req: Request, res: Response) => {
   }
 
   // Check for existing garage
-  const existingGarage = await Garage.findOne({ name });
+  const existingGarage = await Garage.findOne({ garagesOwnerName: garageOwnerName });
   if (existingGarage) {
     return res.status(400).json({ msg: "Garage already exists" });
   }
 
   const newGarage = new Garage({
-    homeOwnerName,
-    address,
+    garageOwnerName,
+    adress,
     phone,
     email,
     garageType,
@@ -77,7 +77,7 @@ const updateGarage = async (req: Request, res: Response) => {
   try {
     const updatedGarage = await Garage.updateOne(
       { _id: req.params.id },
-      { $set: { name: req.body.homeOwnerName } }
+      { $set: { name: req.body.garageOwnerName } }
     );
     res.json(updatedGarage);
   } catch (error) {
@@ -95,4 +95,4 @@ const getSpecificGarage = async (req: Request, res: Response) => {
   }
 };
 
-export default { getGarages, registerGarage, deleteGarage, updateGarage, getSpecificGarage };
+export default { getAllGarages, registerGarage, deleteGarage, updateGarage, getSpecificGarage };

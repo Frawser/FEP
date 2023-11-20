@@ -10,10 +10,14 @@ export interface User extends Document {
 }
 
 export interface Garage {
-    garageName: string,
-    street: string,
-    rooms: number,
-}
+    _id: string;
+    garageType: string;
+    adress: string;
+    description: string;
+    price: number;
+    image: string;
+  }
+
 
 export interface Booking extends Document {
     startDate: Date;

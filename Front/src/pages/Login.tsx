@@ -21,7 +21,7 @@ const Login = () => {
 
         try {
             // Make a POST request to your API endpoint
-            const response = await fetch("http://localhost:3000/users", {
+            const response = await fetch("http://localhost:3000/data/users/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -30,9 +30,9 @@ const Login = () => {
             });
 
             if (response.ok) {
-                console.log("User successfully registered!");
+                console.log("User successfully logged in!");
             } else {
-                console.error("Failed to register user.");
+                console.error("Failed to logged in user.");
             }
         } catch (error) {
             console.error("Error:", error);

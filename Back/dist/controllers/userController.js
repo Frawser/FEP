@@ -7,9 +7,10 @@ const express_1 = require("express");
 const userModel_1 = __importDefault(require("../models/userModel"));
 const verifyToken_1 = require("../middleware/verifyToken");
 const router = (0, express_1.Router)();
-router.post('/register', userModel_1.default.registerUser); //POST - Register a new user & recieve a token- /api/users/register
-router.post('/login', userModel_1.default.loginUser); //POST - Login a user & recieve a token- /api/users/login
-router.get('/me', verifyToken_1.verifyToken, userModel_1.default.getUserData); //GET - gives userinfo - /api/users/me
+router.post('/register', userModel_1.default.registerUser); //POST - Register a new user & recieve a token- /data/users/register
+router.post('/login', userModel_1.default.loginUser); //POST - Login a user & recieve a token- /data/users/login
+router.get('/me', verifyToken_1.verifyToken, userModel_1.default.getUserData); //GET - gives userinfo - /data/users/me
+router.get('/all', userModel_1.default.getAllUsers); //GET - gives all users - /data/users/all
 // POST example
 // {
 //   "email": "test@test.com",

@@ -71,4 +71,13 @@ const getUserData = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         res.status(401).json({ msg: "User data not found" });
     }
 });
-exports.default = { registerUser, loginUser, getUserData };
+const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const users = yield userSchema_1.default.find();
+        res.status(200).json(users);
+    }
+    catch (error) {
+        res.status(500).json({ error: error });
+    }
+});
+exports.default = { registerUser, loginUser, getUserData, getAllUsers };

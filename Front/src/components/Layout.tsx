@@ -3,6 +3,7 @@ import "tailwindcss/tailwind.css";
 import { FaCar } from "react-icons/fa6";
 import { TbParking } from "react-icons/tb";
 import { IoIosSearch } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
 
 const Layout = () => {
   return (
@@ -55,16 +56,10 @@ const Layout = () => {
           </button>
           <div className="hidden lg:flex space-x-4">
             <Link to="/register-user" className="hover:text-blue-500">
-              Register User
+              My Parkings
             </Link>
-            <Link to="/register-house" className="hover:text-blue-500">
-              Register House
-            </Link>
-            <Link to="/motorcycle" className="hover:text-blue-500">
-              Motorcycle
-            </Link>
-            <Link to="/car" className="hover:text-blue-500">
-              Car
+            <Link to="/login" className="hover:text-blue-500">
+              <FaUser className="inline-block mr-1 mb-1"/>Login
             </Link>
           </div>
         </div>

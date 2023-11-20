@@ -1,19 +1,18 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+import app from "./app"; //gets app from app.js
+import mongoose from "mongoose"; //gets mongoose
+import dotenv from "dotenv"; //takes dotenv(PORT & MONGO_URI) and adds it to the process
 
-const app = express();
-const port = process.env.PORT || 3000;
+dotenv.config();
 
-// Enable CORS for all routes
-app.use(cors());
+const PORT = process.env.PORT || 9999; //gives dotenv from the process to PORT
+app.listen(PORT, () => console.log("Server running at http://localhost:" + PORT)); //starts server at PORT from env from the process
 
-app.use(bodyParser.json());
-// Connect to MongoDB
-mongoose.connect("mongodb+srv://Admin:admin@cluster0.tzx7plk.mongodb.net/data");
-mongoose.connection.once("open", () => {
-  console.log("Connected to MongoDB");
-});
+if (!process.env.MONGODB_URI) {
+  console.error('MONGO_URI not defined in environment');
+  process.exit(1);
+}
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+mongoose
+    .connect(process.env.MONGODB_URI) //connects the database to MONGO_URI from env from the process
+    .then(() => console.log("connected to DB")) //writes a message if connection is successful
+    .catch((err: Error) => console.log(err.message)); //Writes an error message if the connection failed

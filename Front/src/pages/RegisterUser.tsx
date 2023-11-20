@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 
 const RegisterUser = () => {
-  // State variables for form fields
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Function to handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -21,16 +19,20 @@ const RegisterUser = () => {
 
     try {
       // Make a POST request to your API endpoint
-      const response = await fetch("http://localhost:3000/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      });
+      const response = await fetch(
+        "http://localhost:3000/data/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        }
+      );
 
       if (response.ok) {
         console.log("User successfully registered!");
+        window.location.href = "/login";
       } else {
         console.error("Failed to register user.");
       }
@@ -90,7 +92,10 @@ const RegisterUser = () => {
             >
               Register
             </button>
-            <Link to="/login" className="text-blue-500 hover:text-blue-700 grow mt-3">
+            <Link
+              to="/login"
+              className="text-blue-500 hover:text-blue-700 grow mt-3"
+            >
               Already have an account?
             </Link>
           </div>
