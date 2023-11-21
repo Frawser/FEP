@@ -6,7 +6,6 @@ export interface User extends Document {
     username: string;
     email: string;
     password: string;
-    bookings: any[]; 
 }
 
 export interface Garage {

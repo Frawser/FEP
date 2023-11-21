@@ -30,7 +30,13 @@ const Login = () => {
             });
 
             if (response.ok) {
+                const user = await response.json();
+                console.log(user);
+                localStorage.setItem('token', user._id);
                 console.log("User successfully logged in!");
+                
+                // Redirect user to home page
+                window.location.href = "/";
             } else {
                 console.error("Failed to logged in user.");
             }

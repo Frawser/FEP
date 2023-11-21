@@ -36,22 +36,24 @@ const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ msg: "Please enter all fields" });
+    return res.status(400).json({ msg: 'Please enter all fields' });
   }
 
   // Check for existing user
   const user = await User.findOne({ email });
   if (!user) {
-    return res.status(400).json({ msg: "User does not exist" });
+    return res.status(400).json({ msg: 'User does not exist' });
   }
 
   // Validate password
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
-    return res.status(400).json({ msg: "Invalid credentials" });
+    return res.status(400).json({ msg: 'Invalid credentials' });
   }
 
+  // Send user data
   res.json(user);
+ 
 };
 
 //Get User Data
@@ -61,7 +63,7 @@ const getUserData = async (
   next: NextFunction
 ) => {
   if (req.user) {
-    const { _id, username, email, bookings } = req.user;
+    const { _id, username, email } = req.user;
 
     User.findById(_id)
       .select("-password")

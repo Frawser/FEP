@@ -4,8 +4,18 @@ import { FaCar } from "react-icons/fa6";
 import { TbParking } from "react-icons/tb";
 import { IoIosSearch } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 const Layout = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <>
       <nav className="bg-white-800 text-black outline outline-1 p-1">
@@ -27,13 +37,14 @@ const Layout = () => {
           </div>
 
           {/* Search Bar */}
-          <div className="flex-grow px-4 relative">
+          <div className=" px-4 relative flex justify-center w-96 items-center">
+            {" "}
             <div className="absolute inset-y-0 left-0 flex items-center pl-7">
               <IoIosSearch className="text-gray-500" />
             </div>
             <input
               type="text"
-              placeholder="Stockholm, Sweden..."
+              placeholder="Stockholm, Göteborg..."
               className="w-full pl-10 border p-2 rounded-lg focus:outline-none"
             />
           </div>
@@ -55,12 +66,16 @@ const Layout = () => {
             </svg>
           </button>
           <div className="hidden lg:flex space-x-4">
-            <Link to="/register-user" className="hover:text-blue-500">
-              My Parkings
-            </Link>
-            <Link to="/login" className="hover:text-blue-500">
-              <FaUser className="inline-block mr-1 mb-1"/>Login
-            </Link>
+            {isLoggedIn ? (
+              <Link to="/my-parkings" className="hover:text-blue-500">
+                My Parkings
+              </Link>
+            ) : (
+              <Link to="/login" className="hover:text-blue-500">
+                <FaUser className="inline-block mr-1 mb-1" />
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </nav>

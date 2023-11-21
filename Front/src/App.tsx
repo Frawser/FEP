@@ -8,6 +8,7 @@ import Motorcycle from "./pages/Motorcycle";
 import Car from "./pages/Car";
 import Login from "./pages/Login";
 import GarageDetails from "./pages/garageDetails";
+import MyParkings from "./pages/MyParkings";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="car" element={<Car />} />
           <Route path="login" element={<Login />} />
           <Route path="garage/:garageId" element={<GarageDetails />} />
+          <Route path="my-parkings" element={<MyParkings />} />
         </Route>
       </Routes>
     </BrowserRouter>
