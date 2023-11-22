@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HiMapPin } from "react-icons/hi2";
 import { Garage } from "../types/types";
+import { useSearch } from "../Context/SearchContext";
+
 
 const Home = () => {
   const [garages, setGarages] = useState<Garage[]>([]);
   const [selectedGarageIds, setSelectedGarageIds] = useState<string[]>([]);
+  const { searchTerm } = useSearch();
+
 
   useEffect(() => {
     const fetchGarages = async () => {
@@ -34,7 +38,12 @@ const Home = () => {
   
       return updatedIds;
     });
+
   };
+
+  const filteredGarages = garages.filter((garage) =>
+  garage.city.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   
 
   return (
@@ -54,7 +63,7 @@ const Home = () => {
         </div>
 
         <div className="container mx-auto mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {garages.map((garage) => (
+          {filteredGarages.map((garage) => (
             <div key={garage._id} className="w-full m-5 relative">
               <div className="bg-white rounded-md overflow-hidden shadow-md">
                 <div className="flex relative">

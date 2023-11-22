@@ -101,10 +101,20 @@ const MyParkings: React.FC = () => {
               </div>
             </div>
           ))}
+          
         </div>
+        
       ) : (
         <p className="text-center mt-4">No parked garages.</p>
       )}
+      <div className='flex justify-center'>
+        <Link to={"/checkout"}>
+        <button
+        className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-4 md:py-1 md:px-2 mt-4 rounded-full"
+      >
+        Checkout
+      </button></Link>
+      </div>
     </div>
   );
 };

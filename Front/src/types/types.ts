@@ -10,3 +10,7 @@ export interface Garage {
     image: string;
     city: string;
   }
+
+ export interface GarageProps {
+    garages: Garage[];
+  }

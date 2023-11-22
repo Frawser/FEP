@@ -7,8 +7,10 @@ import RegisterGarage from "./pages/RegisterGarage";
 import Motorcycle from "./pages/Motorcycle";
 import Car from "./pages/Car";
 import Login from "./pages/Login";
-import GarageDetails from "./pages/garageDetails";
+import GarageDetails from "./pages/GarageDetails";
 import MyParkings from "./pages/MyParkings";
+import Checkout from "./pages/Chechout";
+
 
 export default function App() {
   return (
@@ -23,6 +25,7 @@ export default function App() {
           <Route path="login" element={<Login />} />
           <Route path="garage/:garageId" element={<GarageDetails />} />
           <Route path="my-parkings" element={<MyParkings />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
       </Routes>
     </BrowserRouter>

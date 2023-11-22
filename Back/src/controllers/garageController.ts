@@ -9,4 +9,19 @@ router.get('/:id', garageModel.getSpecificGarage); //GET - gives one garage - /d
 router.put('/update/:id', garageModel.updateGarage); //PUT - update a garage - /data/garages/update/:id
 router.delete('/delete/:id', garageModel.deleteGarage); //DELETE - delete a garage - /data/garages/delete/:id
 
+
+// POST example
+// {
+//   "garageOwnerName": "test",
+//   "adress": "test@test",
+//   "phone": "12345678",
+//   "email": "test@test",
+//   "garageType": "test",
+//   "price": "123",
+//   "description": "test",
+//   "image": "test",
+//   "city": "test"
+// }
+
+
 export default router;

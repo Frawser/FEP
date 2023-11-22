@@ -18,12 +18,6 @@ export interface Garage {
   }
 
 
-export interface Booking extends Document {
-    startDate: Date;
-    endDate: Date;
-    location: string;
-}
-
 export interface RequestWithUser extends Request {
     user?: User;
   }

@@ -1,11 +1,11 @@
-import app from "./app"; //gets app from app.js
-import mongoose from "mongoose"; //gets mongoose
-import dotenv from "dotenv"; //takes dotenv(PORT & MONGO_URI) and adds it to the process
+import app from "./app"; 
+import mongoose from "mongoose"; 
+import dotenv from "dotenv"; 
 
 dotenv.config();
 
-const PORT = process.env.PORT || 9999; //gives dotenv from the process to PORT
-app.listen(PORT, () => console.log("Server running at http://localhost:" + PORT)); //starts server at PORT from env from the process
+const PORT = process.env.PORT || 9999; 
+app.listen(PORT, () => console.log("Server running at http://localhost:" + PORT)); 
 
 if (!process.env.MONGODB_URI) {
   console.error('MONGO_URI not defined in environment');
@@ -14,5 +14,5 @@ if (!process.env.MONGODB_URI) {
 
 mongoose
     .connect(process.env.MONGODB_URI) //connects the database to MONGO_URI from env from the process
-    .then(() => console.log("connected to DB")) //writes a message if connection is successful
-    .catch((err: Error) => console.log(err.message)); //Writes an error message if the connection failed
+    .then(() => console.log("connected to DB")) 
+    .catch((err: Error) => console.log(err.message)); 
